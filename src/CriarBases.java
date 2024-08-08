@@ -26,7 +26,6 @@ public class CriarBases {
         // Embaralhar os vetores
         Collections.shuffle(pacientes);
         Collections.shuffle(medicos);
-
         // Caminhos para os arquivos
         String caminhoPacientes = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\pacientes.dat";
         String caminhoMedicos = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\medicos.dat";
