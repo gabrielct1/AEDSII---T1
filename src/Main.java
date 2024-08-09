@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -25,21 +26,32 @@ public class Main {
 
             switch(opc){
                 case 1:
-                    Operacoes.inserir();
+                    //Inserir uma base
                     break;
                 case 2:
-                    Operacoes.excluir();
+                    //Excluir uma base
                     break;
                 case 3:
-                    //busca sequencial();
+                    System.out.println("Informe o ID a ser procurado: ");
+                    String nomeArquivo = "";
+                    int idProcurado = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Qual base de dados você deseja pesquisar?\n[0] Médicos\n[1] Pacientes");
+                    int arquivoPesquisa = in.nextInt();
+                    if (arquivoPesquisa == 0) {
+                        nomeArquivo = "medicos.dat";
+                    } else if (arquivoPesquisa == 1) {
+                        nomeArquivo = "pacientes.dat";
+                    }
+                    Buscas.buscaSequencial(nomeArquivo, idProcurado);
                     break;
                 case 4:
                     //busca binaria();
                 case 5:
-                    LerArquivos.exibirDadosPacientes("C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\pacientes.dat");
+                    LerArquivos.exibirDadosPacientes("C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\pacientes.dat");
                     break;
                 case 6:
-                    LerArquivos.exibirDadosMedicos("C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\medicos.dat");
+                    LerArquivos.exibirDadosMedicos("C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\medicos.dat");
                     break;
                 case 7:
                     //exibir base de consultas

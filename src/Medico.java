@@ -25,6 +25,7 @@ public class Medico extends Pessoa {
         return crm;
     }
 
+    @Override
     public void imprimeInfo() {
         System.out.println("Nome: " + super.getNome());
         System.out.println("ID: " + super.getId());

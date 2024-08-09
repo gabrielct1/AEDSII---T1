@@ -12,13 +12,13 @@ public class CriarBases {
         List<Medico> medicos = new ArrayList<>();
 
         // Adicionar pacientes ao vetor
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1000; i < 1010; i++) {
             Paciente p = new Paciente("Ana", i, "27/10/2003", "98627-9186");
             pacientes.add(p);
         }
 
         // Adicionar médicos ao vetor
-        for (int j = 0; j < 10; j++) {
+        for (int j = 2000; j < 2010; j++) {
             Medico m = new Medico("Gabriel", j, "Clínico Geral", "23-854.986");
             medicos.add(m);
         }
@@ -27,8 +27,8 @@ public class CriarBases {
         Collections.shuffle(pacientes);
         Collections.shuffle(medicos);
         // Caminhos para os arquivos
-        String caminhoPacientes = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\pacientes.dat";
-        String caminhoMedicos = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\medicos.dat";
+        String caminhoPacientes = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\pacientes.dat";
+        String caminhoMedicos = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\medicos.dat";
 
         // Salvar dados dos pacientes
         try (DataOutputStream dosPacientes = new DataOutputStream(new FileOutputStream(caminhoPacientes))) {

@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Buscas {
 
-    public void buscaSequencial(File arquivo, int idProcurado, Pessoa pessoa) {
+    public static void buscaSequencial(String arquivo, int idProcurado) {
         try (DataInputStream dis = new DataInputStream(new FileInputStream(arquivo))) {
             boolean encontrado = false;
 
@@ -15,28 +15,23 @@ public class Buscas {
                 if (id == idProcurado) {
                     encontrado = true;
 
-                    // Dependendo do tipo de pessoa, cria o objeto e imprime as informações
-                    if (pessoa instanceof Paciente) {
-                        Paciente paciente = new Paciente(
-                                nome,
-                                id,
-                                especialidadeOuDataNascimento, // Data de Nascimento
-                                crmOuTelefone  // Telefone
-                        );
-                        paciente.imprimeInfo();
-                    } else if (pessoa instanceof Medico) {
-                        Medico medico = new Medico(
-                                nome,
-                                id,
-                                especialidadeOuDataNascimento, // Especialidade
-                                crmOuTelefone  // CRM
-                        );
-                        medico.imprimeInfo();
+                    if (arquivo.contains("pacientes")) {
+                        System.out.println("Nome: " + nome);
+                        System.out.println("ID: " + id);
+                        System.out.println("Data de Nascimento: " + especialidadeOuDataNascimento);
+                        System.out.println("Telefone: " + crmOuTelefone);
+
+                    } else if (arquivo.contains("medicos")) {
+                        System.out.println("Nome: " + nome);
+                        System.out.println("ID: " + id);
+                        System.out.println("Especialidade: " + especialidadeOuDataNascimento);
+                        System.out.println("CRM: " + crmOuTelefone);
+                    } else {
+                        System.out.println("Arquivo não reconhecido.");
                     }
                     break;
                 }
             }
-
             if (!encontrado) {
                 System.out.println("Pessoa com ID " + idProcurado + " não encontrada.");
             }
@@ -45,7 +40,7 @@ public class Buscas {
         }
     }
 
-    public void buscaBinaria(File arquivo, int idProcurado, Pessoa pessoa) {
+    public static void buscaBinaria(String arquivo, int idProcurado, Pessoa pessoa) {
         try (RandomAccessFile raf = new RandomAccessFile(arquivo, "r")) {
             long esquerda = 0;
             long direita = (raf.length() / getRegistroTamanho()) - 1;
@@ -92,8 +87,8 @@ public class Buscas {
         }
     }
 
-    public int getRegistroTamanho() {
-        //presumindo que o tamanho é 128, nao sei o tamanho certo xd
+    public static int getRegistroTamanho() {
+
         return 128;
     }
 }
