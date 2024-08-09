@@ -1,11 +1,15 @@
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
         int opc = 0;
-
+        String nomeArquivo = "";
+        int arquivoPesquisa;
         Scanner in = new Scanner(System.in);
 
         CriarBases.criarBasesDesordenadas();
@@ -33,11 +37,10 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Informe o ID a ser procurado: ");
-                    String nomeArquivo = "";
                     int idProcurado = in.nextInt();
                     in.nextLine();
                     System.out.println("Qual base de dados você deseja pesquisar?\n[0] Médicos\n[1] Pacientes");
-                    int arquivoPesquisa = in.nextInt();
+                    arquivoPesquisa = in.nextInt();
                     if (arquivoPesquisa == 0) {
                         nomeArquivo = "medicos.dat";
                     } else if (arquivoPesquisa == 1) {

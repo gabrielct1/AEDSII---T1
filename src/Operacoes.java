@@ -7,8 +7,4 @@ public class Operacoes {
     public static void excluir() {
 
     }
-
-    public static void ordenarQuickSort(File file) {
-
-    }
 }
