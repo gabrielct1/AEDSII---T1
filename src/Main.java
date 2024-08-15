@@ -21,7 +21,7 @@ public class Main {
             System.out.println("[5] Exibir base de pacientes.");
             System.out.println("[6] Exibir base de médicos.");
             System.out.println("[7] Exibir base de consultas.");
-            System.out.println("[8] Ordernar uma base.");
+            System.out.println("[8] Ordenar uma base.");
             System.out.println("[9] Sair.");
 
             System.out.printf("\nOpção: ");

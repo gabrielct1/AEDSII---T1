@@ -65,9 +65,9 @@ public class CriarBases {
         Collections.shuffle(medicos);
         Collections.shuffle(consultas);
 
-        String caminhoPacientes = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\pacientes.dat";
-        String caminhoMedicos = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\medicos.dat";
-        String caminhoConsultas = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\consultas.dat";
+        String caminhoPacientes = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\pacientes.dat";
+        String caminhoMedicos = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\medicos.dat";
+        String caminhoConsultas = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\consultas.dat";
 
         try (DataOutputStream dosPacientes = new DataOutputStream(new FileOutputStream(caminhoPacientes))) {
             for (Paciente p : pacientes) {

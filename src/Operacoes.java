@@ -16,7 +16,7 @@ public class Operacoes {
 
     public static void inserirPacientes() throws IOException {
         Scanner in = new Scanner(System.in);
-        String nomeArquivo = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\pacientes.dat";
+        String nomeArquivo = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\pacientes.dat";
 
         System.out.println("\nInforme o nome do paciente:");
         String nome = in.nextLine();
@@ -52,7 +52,7 @@ public class Operacoes {
 
     public static void inserirMedicos() throws IOException {
         Scanner in = new Scanner(System.in);
-        String nomeArquivo = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\medicos.dat";
+        String nomeArquivo = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\medicos.dat";
 
         System.out.println("\nInforme o nome do médico:");
         String nome = in.nextLine();
@@ -87,7 +87,7 @@ public class Operacoes {
 
     public static void inserirConsultas() throws IOException {
         Scanner in = new Scanner(System.in);
-        String nomeArquivo = "C:\\Users\\Teknisa\\IdeaProjects\\AEDSII - Trabalho I\\consultas.dat";
+        String nomeArquivo = "C:\\Users\\gabri\\Documents\\UFOP\\AEDS 2\\AEDSII - Trabalho I\\consultas.dat";
 
         System.out.println("\nInforme o ID da consulta que deseja inserir:");
         int idConsulta = in.nextInt();
