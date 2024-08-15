@@ -12,24 +12,17 @@ public class Medico extends Pessoa {
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
-
     public void setCrm(String crm) {
         this.crm = crm;
     }
-
     public String getEspecialidade() {
         return especialidade;
     }
-
     public String getCrm() {
         return crm;
     }
 
-    @Override
-    public void imprimeInfo() {
-        System.out.println("Nome: " + super.getNome());
-        System.out.println("ID: " + super.getId());
-        System.out.println("Especialidade: " + this.getEspecialidade());
-        System.out.println("CRM: " + this.getCrm());
+    public int calcularTamanhoRegistro() {
+        return 50 + 4 + 25 + 7;
     }
 }

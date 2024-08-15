@@ -1,4 +1,4 @@
-public abstract class Pessoa {
+public class Pessoa {
     private String nome;
     private int id;
 
@@ -19,6 +19,4 @@ public abstract class Pessoa {
     public int getId() {
         return this.id;
     }
-
-    public abstract void imprimeInfo();
 }
