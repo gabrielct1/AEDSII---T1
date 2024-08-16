@@ -32,17 +32,17 @@ public class CriarBases {
         int mes = 8;
         int ano = 2024;
 
-        for (int i = 1000; i < 1010; i++) {
+        for (int i = 1000; i < 1200; i++) {
             Paciente p = new Paciente(padronizarNome("Ana"), i, "27/10/2003", padronizarTelefone("98627-9186"));
             pacientes.add(p);
         }
 
-        for (int j = 2000; j < 2010; j++) {
+        for (int j = 2000; j < 2200; j++) {
             Medico m = new Medico(padronizarNome("Gabriel"), j, padronizarEspecialidade("Cliníco Geral"), "2347-MG");
             medicos.add(m);
         }
 
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 200; i++) {
             int idPaciente = 1000 + random.nextInt(11);
             int idMedico = 2000 + random.nextInt(11);
             String data = String.format("%02d/%02d/%04d", dia, mes, ano);

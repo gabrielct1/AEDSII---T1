@@ -13,31 +13,6 @@ public class Buscas {
 
     private static final int TAMANHO_HORA = 5; // "HH:MM" é sempre 5 bytes
 
-    public static void buscaSequencial(String arquivo, int idProcurado) {
-        try (DataInputStream dis = new DataInputStream(new FileInputStream(arquivo))) {
-            boolean encontrado = false;
-
-            while (dis.available() > 0) {
-                String nome = dis.readUTF();
-                int id = dis.readInt();
-                String especialidadeOuDataNascimento = dis.readUTF();
-                String crmOuTelefone = dis.readUTF();
-
-                if (id == idProcurado) {
-                    encontrado = true;
-
-                    exibirDadosRegistro(arquivo, nome, id, especialidadeOuDataNascimento, crmOuTelefone);
-                    break;
-                }
-            }
-            if (!encontrado) {
-                System.out.println("Pessoa com ID " + idProcurado + " não encontrada.");
-            }
-        } catch (IOException e) {
-            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
-        }
-    }
-
     public static void buscaSequencialPacientes(String arquivo, int idProcurado) {
         try (RandomAccessFile raf = new RandomAccessFile(arquivo, "r")) {
             boolean encontrado = false;
@@ -79,7 +54,7 @@ public class Buscas {
                 }
             }
             if (!encontrado) {
-                System.out.println("Paciente com ID " + idProcurado + " não encontrado.");
+                System.out.println("Médico com ID " + idProcurado + " não encontrado.");
             }
         } catch (IOException e) {
             System.err.println("Erro ao ler o arquivo: " + e.getMessage());
@@ -144,7 +119,7 @@ public class Buscas {
     }
 
     public static void buscaBinariaMedicos(String arquivo, int idConsultaBuscado) {
-        try (RandomAccessFile raf = new RandomAccessFile(arquivo, "r")) {
+        try (RandomAccessFile raf = new RandomAccessFile(arquivo,   "r")) {
             long tamanhoRegistro = 86; // Cada registro tem 86 bytes.
             long numeroRegistros = raf.length() / tamanhoRegistro;
             long inicio = 0;

@@ -12,7 +12,7 @@ public class Main {
 
         CriarBases.criarBasesDesordenadas();
 
-        while(opc != 9){
+        while (opc != 9) {
             System.out.println("\nQual operação deseja realizar?");
             System.out.println("[1] Inserir em uma base.");
             System.out.println("[2] Excluir de uma base.");
