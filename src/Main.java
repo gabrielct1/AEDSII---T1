@@ -1,28 +1,41 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
         int opc = 0, arquivoPesquisa, idProcurado;
+
+        int numParticoesMedicos = 0;
+        int numParticoesPacientes = 0;
+        int numParticoesConsultas = 0;
+
         String nomeArquivo = "";
 
         Scanner in = new Scanner(System.in);
 
         CriarBases.criarBasesDesordenadas();
 
-        while (opc != 9) {
+        while(opc != 12){
             System.out.println("\nQual operação deseja realizar?");
-            System.out.println("[1] Inserir em uma base.");
-            System.out.println("[2] Excluir de uma base.");
-            System.out.println("[3] Realizar uma busca sequencial.");
-            System.out.println("[4] Realizar uma busca binária.");
-            System.out.println("[5] Exibir base de pacientes.");
-            System.out.println("[6] Exibir base de médicos.");
-            System.out.println("[7] Exibir base de consultas.");
-            System.out.println("[8] Ordenar uma base.");
-            System.out.println("[9] Sair.");
+            System.out.println("[01] Inserir em uma base.");
+            System.out.println("[02] Excluir de uma base.");
+            System.out.println("[03] Realizar uma busca sequencial.");
+            System.out.println("[04] Realizar uma busca binária.");
+            System.out.println("[05] Exibir base de pacientes.");
+            System.out.println("[06] Exibir base de médicos.");
+            System.out.println("[07] Exibir base de consultas.");
+            System.out.println("[08] Ordernar uma base.");
+            System.out.println("[09] Gerar partições de pacientes.");
+            System.out.println("[10] Gerar partições de médicos.");
+            System.out.println("[11] Gerar partições de consultas.");
+            System.out.println("[12] Intercalar partições de pacientes");
+            System.out.println("[13] Intercalar partições de médicos");
+            System.out.println("[14] Intercalar partições de consultas");
+            System.out.println("[15] Sair.");
 
             System.out.printf("\nOpção: ");
             opc = in.nextInt();
@@ -161,8 +174,32 @@ public class Main {
                     }
                     break;
                 case 9:
+                    List<Integer> idsPacientes = LerArquivos.extrairIdsPacientes("pacientes.dat");
+                    numParticoesPacientes = SelecaoSubstituicao.gerarParticoes("pacientes", idsPacientes);
+                    System.out.println("Número de partições geradas para pacientes: " + numParticoesPacientes);
+                    break;
+                case 10:
+                    List<Integer> idsMedicos = LerArquivos.extrairIdsMedicos("medicos.dat");
+                    numParticoesMedicos = SelecaoSubstituicao.gerarParticoes("medicos", idsMedicos);
+                    System.out.println("Número de partições geradas para médicos: " + numParticoesMedicos);
+                    break;
+                case 11:
+                    List<Integer> idsConsultas = LerArquivos.extrairIdsConsultas("consultas.dat");
+                    numParticoesConsultas = SelecaoSubstituicao.gerarParticoes("consultas", idsConsultas);
+                    System.out.println("Número de partições geradas para consultas: " + numParticoesConsultas);
+                    break;
+                case 12:
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesPacientes, "pacientes", "pacientes_intercalados.txt");
+                    break;
+                case 13:
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesMedicos, "medicos", "medicos_intercalados.txt");
+                    break;
+                case 14:
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesConsultas, "consultas", "consultas_intercaladas.txt");
+                    break;
+                case 15:
                     System.out.println("Saindo...");
-                    opc = 9;
+                    opc = 15;
                     break;
                 default:
                     System.out.println("Opção inválida.\n");
