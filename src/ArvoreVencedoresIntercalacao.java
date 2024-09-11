@@ -17,7 +17,8 @@ public class ArvoreVencedoresIntercalacao {
             }
         }
 
-        BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida));
+        // Criar o arquivo de saída com extensão .dat
+        BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivoSaida + ".dat"));
 
         // Processo de intercalação
         while (!arvoreVencedores.isEmpty()) {

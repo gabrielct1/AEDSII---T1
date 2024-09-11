@@ -189,13 +189,13 @@ public class Main {
                     System.out.println("Número de partições geradas para consultas: " + numParticoesConsultas);
                     break;
                 case 12:
-                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesPacientes, "pacientes", "pacientes_intercalados.txt");
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesPacientes, "pacientes", "pacientes_intercalados");
                     break;
                 case 13:
-                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesMedicos, "medicos", "medicos_intercalados.txt");
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesMedicos, "medicos", "medicos_intercalados");
                     break;
                 case 14:
-                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesConsultas, "consultas", "consultas_intercaladas.txt");
+                    ArvoreVencedoresIntercalacao.intercalarParticoes(numParticoesConsultas, "consultas", "consultas_intercaladas");
                     break;
                 case 15:
                     System.out.println("Saindo...");
