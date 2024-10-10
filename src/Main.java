@@ -33,12 +33,16 @@ public class Main {
                     tabelaHash.inserir(paciente);
                     break;
 
-                case 16: // Buscar paciente
-                    // A implementação para buscar pacientes pode ser feita aqui.
+                case 16:
+                    System.out.print("Informe o ID do paciente para buscar: ");
+                    int idBusca = scanner.nextInt();
+                    tabelaHash.buscar(idBusca);
                     break;
 
-                case 17: // Excluir paciente
-                    // A implementação para excluir pacientes pode ser feita aqui.
+                case 17:
+                    System.out.print("Informe o ID do paciente para excluir: ");
+                    int idExclusao = scanner.nextInt();
+                    tabelaHash.excluir(idExclusao);
                     break;
 
                 case 18: // Exibir tabela hash

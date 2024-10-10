@@ -86,6 +86,95 @@ class TabelaHashDisco {
         }
     }
 
+    // Método de busca corrigido
+    public PacienteS buscar(int id) {
+        int posicao = hash(id);
+        System.out.println("Buscando paciente com ID = " + id);
+
+        try (RandomAccessFile tabelaFile = new RandomAccessFile(ARQUIVO_TABELA, "r");
+             RandomAccessFile listasFile = new RandomAccessFile(ARQUIVO_LISTAS, "r")) {
+
+            tabelaFile.seek(posicao * 4);
+            int primeiroIndice = tabelaFile.readInt();
+
+            if (primeiroIndice == -1) {
+                System.out.println("Paciente não encontrado.");
+                return null;
+            }
+
+            // Percorre a lista encadeada
+            while (primeiroIndice != -1) {
+                listasFile.seek(primeiroIndice);
+                int tamanhoPaciente = listasFile.readInt();
+                byte[] bytesPaciente = new byte[tamanhoPaciente];
+                listasFile.readFully(bytesPaciente);
+
+                // Desserializa o paciente
+                PacienteS paciente = (PacienteS) new ObjectInputStream(new ByteArrayInputStream(bytesPaciente)).readObject();
+                if (paciente.id == id) {
+                    System.out.println("Paciente encontrado: ID = " + paciente.id + ", Nome = " + paciente.nome);
+                    return paciente;
+                }
+
+                primeiroIndice = listasFile.readInt(); // Próximo da lista
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Paciente não encontrado.");
+        return null;
+    }
+
+    // Método de exclusão corrigido
+    public boolean excluir(int id) {
+        int posicao = hash(id);
+        System.out.println("Excluindo paciente com ID = " + id);
+
+        try (RandomAccessFile tabelaFile = new RandomAccessFile(ARQUIVO_TABELA, "rw");
+             RandomAccessFile listasFile = new RandomAccessFile(ARQUIVO_LISTAS, "rw")) {
+
+            tabelaFile.seek(posicao * 4);
+            int primeiroIndice = tabelaFile.readInt();
+
+            if (primeiroIndice == -1) {
+                System.out.println("Paciente não encontrado para exclusão.");
+                return false;
+            }
+
+            long ultimaPosicao = -1;
+            while (primeiroIndice != -1) {
+                listasFile.seek(primeiroIndice);
+                int tamanhoPaciente = listasFile.readInt();
+                byte[] bytesPaciente = new byte[tamanhoPaciente];
+                listasFile.readFully(bytesPaciente);
+
+                PacienteS paciente = (PacienteS) new ObjectInputStream(new ByteArrayInputStream(bytesPaciente)).readObject();
+                if (paciente.id == id) {
+                    if (ultimaPosicao == -1) {
+                        tabelaFile.seek(posicao * 4);
+                        tabelaFile.writeInt(-1);  // Remove o primeiro índice
+                    } else {
+                        listasFile.seek(ultimaPosicao + 4 + tamanhoPaciente);
+                        listasFile.writeInt(-1); // Remove a referência para o índice excluído
+                    }
+                    System.out.println("Paciente excluído com sucesso.");
+                    return true;
+                }
+
+                ultimaPosicao = primeiroIndice;
+                primeiroIndice = listasFile.readInt();
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Paciente não encontrado para exclusão.");
+        return false;
+    }
+
     // Exibe a tabela hash
     public void exibirTabelaHash() {
         try (RandomAccessFile tabelaFile = new RandomAccessFile(ARQUIVO_TABELA, "r");
